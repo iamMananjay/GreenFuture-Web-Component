@@ -87,9 +87,7 @@ const Login = () => {
             Login
           </Button>
         </form>
-        <p className="mt-6 text-center text-gray-600 text-sm">
-          © {new Date().getFullYear()} Greenfuture Energy. All Rights Reserved.
-        </p>
+        
       </div>
     </div>
   );
