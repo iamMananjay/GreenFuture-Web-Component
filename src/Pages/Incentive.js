@@ -90,7 +90,7 @@ const Incentive = () => {
   return (
     <div className="p-6">
       {/* Header */}
-      <h1 className="text-3xl font-semibold mb-6 text-center text-indigo-700">Incentive Management</h1>
+      <h1 className="text-4xl font-bold text-purple-800 mb-8 text-center">Reward Management</h1>
       
       {/* Add New Incentive Button */}
       <div className="flex justify-center mb-6">
@@ -153,7 +153,7 @@ const Incentive = () => {
             className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-6 rounded-full shadow-lg hover:bg-gradient-to-r hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 ease-in-out transform hover:scale-105"
             onClick={handleAddIncentive}
           >
-            {selectedIncentive ? "Update Incentive" : "Add Incentive"}
+            {selectedIncentive ? "Update Reward" : "Add Reward"}
           </button>
         </div>
       )}

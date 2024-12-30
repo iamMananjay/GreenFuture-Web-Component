@@ -72,7 +72,7 @@ const Job = () => {
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       <div className="text-center mb-6">
-        <h1 className="text-4xl font-bold text-indigo-700">Job Designations</h1>
+        <h1 className="text-4xl font-bold text-purple-800 mb-8 text-center">Job Designations</h1>
         <p className="text-lg text-gray-600 mt-2">Manage job titles and salaries</p>
       </div>
 
@@ -133,53 +133,54 @@ const Job = () => {
       </div>
 
       {showForm && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-            <h2 className="text-2xl font-semibold text-indigo-700 mb-6 text-center">
-              {isEditing ? "Edit Job" : "Add New Job"}
-            </h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={job.name}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2">Salary (£)</label>
-                <input
-                  type="number"
-                  name="salary"
-                  value={job.salary}
-                  onChange={handleChange}
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  required
-                />
-              </div>
-              <div className="flex justify-end space-x-4">
-                <button
-                  type="button"
-                  onClick={() => setShowForm(false)}
-                  className="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition-all duration-300 ease-in-out"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="bg-gradient-to-r from-green-400 to-green-500 text-white py-2 px-4 rounded-lg hover:bg-gradient-to-r hover:from-green-500 hover:to-green-600 transition-all duration-300 ease-in-out"
-                >
-                  {isEditing ? "Update Job" : "Create Job"}
-                </button>
-              </div>
-            </form>
-          </div>
+  <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+    <div className="bg-gradient-to-r from-purple-600 to-purple-700 p-10 rounded-xl shadow-2xl w-[600px]">
+      <h2 className="text-3xl font-bold text-white mb-8 text-center">
+        {isEditing ? "Edit Job" : "Add New Job"}
+      </h2>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-8">
+          <label className="block text-gray-200 text-lg mb-3">Name</label>
+          <input
+            type="text"
+            name="name"
+            value={job.name}
+            onChange={handleChange}
+            className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+            required
+          />
         </div>
-      )}
+        <div className="mb-8">
+          <label className="block text-gray-200 text-lg mb-3">Salary (£)</label>
+          <input
+            type="number"
+            name="salary"
+            value={job.salary}
+            onChange={handleChange}
+            className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+            required
+          />
+        </div>
+        <div className="flex justify-end gap-6">
+          <button
+            type="button"
+            onClick={() => setShowForm(false)}
+            className="px-8 py-3 bg-gray-500 text-white rounded-lg text-lg font-medium hover:bg-gray-600 transition-all duration-300"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="px-8 py-3 bg-purple-500 text-white rounded-lg text-lg font-medium hover:bg-purple-600 transition-all duration-300"
+          >
+            {isEditing ? "Update Job" : "Create Job"}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };

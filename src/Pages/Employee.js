@@ -130,8 +130,8 @@ const Employee = () => {
 
   return (
     <div className="p-6 bg-white">
-      <h1 className="text-3xl font-semibold text-center text-purple-600 mb-6">
-        Employees
+      <h1 className="text-4xl font-bold text-purple-800 mb-8 text-center">
+        Employee Management
       </h1>
 
       <div className="mb-6 flex items-center justify-center space-x-4">
@@ -210,107 +210,121 @@ const Employee = () => {
       </div>
 
       {showForm && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
-            <h2 className="text-xl font-bold text-center text-purple-600 mb-4">
-              {editingEmployee ? "Edit Employee" : "Add Employee"}
-            </h2>
-            <form
-              onSubmit={editingEmployee ? handleUpdateEmployee : handleAddEmployee}
+  <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+    <div className="bg-gradient-to-r from-purple-600 to-purple-700 p-10 rounded-xl shadow-2xl w-[600px]">
+      <h2 className="text-3xl font-bold text-white mb-8 text-center">
+        {editingEmployee ? "Edit Employee" : "Add Employee"}
+      </h2>
+      <form
+        onSubmit={editingEmployee ? handleUpdateEmployee : handleAddEmployee}
+      >
+        {["name", "email", "password", "contact"].map((field) => (
+          <div className="mb-6" key={field}>
+            <label
+              htmlFor={field}
+              className="block text-gray-200 text-lg mb-2 capitalize"
             >
-              {["name", "email", "password", "contact"].map((field) => (
-                <div className="mb-4" key={field}>
-                  <label
-                    htmlFor={field}
-                    className="block text-gray-700 mb-2 capitalize"
-                  >
-                    {field}
-                  </label>
-                  <input
-                    type={field === "password" ? "password" : "text"}
-                    id={field}
-                    name={field}
-                    value={editingEmployee ? editingEmployee[field] : newEmployee[field]}
-                    onChange={handleInputChange}
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                    required
-                  />
-                </div>
-              ))}
-              <div className="mb-4">
-                <label htmlFor="gender" className="block text-gray-700 mb-2">
-                  Gender
-                </label>
-                <select
-                  id="gender"
-                  name="gender"
-                  value={editingEmployee ? editingEmployee.gender : newEmployee.gender}
-                  onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-md"
-                  required
-                >
-                  <option value="">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="userRole" className="block text-gray-700 mb-2">
-                  Role
-                </label>
-                <select
-                  id="userRole"
-                  name="userRole"
-                  value={editingEmployee ? editingEmployee.userRole : newEmployee.userRole}
-                  onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-md"
-                  required
-                >
-                  <option value="">Select Role</option>
-                  <option value="Innovation Manager">Innovation Manager</option>
-                  <option value="Regional IT Support">Regional IT Support</option>
-                  <option value="Employee">Employee</option>
-                </select>
-              </div>
-              <div className="mb-4">
-                <label htmlFor="designationId" className="block text-gray-700 mb-2">
-                  Job Designation (Optional)
-                </label>
-                <select
-                  id="designationId"
-                  name="designationId"
-                  value={editingEmployee ? editingEmployee.designation?.id || "" : newEmployee.designationId}
-                  onChange={handleInputChange}
-                  className="w-full p-2 border border-gray-300 rounded-md"
-                >
-                  <option value="">Select Designation</option>
-                  {jobDesignations.map((designation) => (
-                    <option key={designation.id} value={designation.id}>
-                      {designation.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="flex justify-between">
-                <button
-                  type="button"
-                  onClick={() => setShowForm(false)}
-                  className="bg-gray-500 text-white py-1 px-3 rounded hover:bg-gray-600"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="bg-purple-600 text-white py-1 px-3 rounded hover:bg-purple-700"
-                >
-                  {editingEmployee ? "Update" : "Add"} Employee
-                </button>
-              </div>
-            </form>
+              {field}
+            </label>
+            <input
+              type={field === "password" ? "password" : "text"}
+              id={field}
+              name={field}
+              value={
+                editingEmployee ? editingEmployee[field] : newEmployee[field]
+              }
+              onChange={handleInputChange}
+              className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+              required
+            />
           </div>
+        ))}
+        <div className="mb-6">
+          <label htmlFor="gender" className="block text-gray-200 text-lg mb-2">
+            Gender
+          </label>
+          <select
+            id="gender"
+            name="gender"
+            value={
+              editingEmployee ? editingEmployee.gender : newEmployee.gender
+            }
+            onChange={handleInputChange}
+            className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
         </div>
-      )}
+        <div className="mb-6">
+          <label htmlFor="userRole" className="block text-gray-200 text-lg mb-2">
+            Role
+          </label>
+          <select
+            id="userRole"
+            name="userRole"
+            value={
+              editingEmployee ? editingEmployee.userRole : newEmployee.userRole
+            }
+            onChange={handleInputChange}
+            className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+            required
+          >
+            <option value="">Select Role</option>
+            <option value="Innovation Manager">Innovation Manager</option>
+            <option value="Regional IT Support">Regional IT Support</option>
+            <option value="Employee">Employee</option>
+          </select>
+        </div>
+        <div className="mb-6">
+          <label
+            htmlFor="designationId"
+            className="block text-gray-200 text-lg mb-2"
+          >
+            Job Designation (Optional)
+          </label>
+          <select
+            id="designationId"
+            name="designationId"
+            value={
+              editingEmployee
+                ? editingEmployee.designation?.id || ""
+                : newEmployee.designationId
+            }
+            onChange={handleInputChange}
+            className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+          >
+            <option value="">Select Designation</option>
+            {jobDesignations.map((designation) => (
+              <option key={designation.id} value={designation.id}>
+                {designation.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex justify-end gap-6">
+          <button
+            type="button"
+            onClick={() => setShowForm(false)}
+            className="px-6 py-3 bg-gray-500 text-white rounded-lg text-lg font-medium hover:bg-gray-600 transition-all duration-300"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="px-6 py-3 bg-purple-500 text-white rounded-lg text-lg font-medium hover:bg-purple-600 transition-all duration-300"
+          >
+            {editingEmployee ? "Update" : "Add"} Employee
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };

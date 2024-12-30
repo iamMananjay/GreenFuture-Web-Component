@@ -145,65 +145,66 @@ const RegionComponent = () => {
 
       {/* Modal for Add/Edit Region */}
       {showForm && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-gradient-to-r from-purple-600 to-purple-700 p-8 rounded-lg shadow-xl w-96">
-            <h2 className="text-2xl font-semibold text-white mb-6 text-center">
-              {isEditing ? "Edit Region" : "Add New Region"}
-            </h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-6">
-                <label htmlFor="name" className="block text-gray-200 mb-2">
-                  Region Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={newRegionName}
-                  onChange={handleInputChange}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  required
-                />
-              </div>
+          <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+            <div className="bg-gradient-to-r from-purple-600 to-purple-700 p-10 rounded-xl shadow-2xl w-[600px]">
+              <h2 className="text-3xl font-bold text-white mb-8 text-center">
+                {isEditing ? "Edit Region" : "Add New Region"}
+              </h2>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-8">
+                  <label htmlFor="name" className="block text-gray-200 text-lg mb-3">
+                    Region Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={newRegionName}
+                    onChange={handleInputChange}
+                    className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+                    required
+                  />
+                </div>
 
-              <div className="mb-6">
-                <label htmlFor="members" className="block text-gray-200 mb-2">
-                  Select Members
-                </label>
-                <select
-                  id="members"
-                  multiple
-                  value={selectedMembers}
-                  onChange={handleMemberSelect}
-                  className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-                  required
-                >
-                  {employees.map((employee) => (
-                    <option key={employee.id} value={employee.id}>
-                      {employee.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                <div className="mb-8">
+                  <label htmlFor="members" className="block text-gray-200 text-lg mb-3">
+                    Select Members
+                  </label>
+                  <select
+                    id="members"
+                    multiple
+                    value={selectedMembers}
+                    onChange={handleMemberSelect}
+                    className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+                    required
+                  >
+                    {employees.map((employee) => (
+                      <option key={employee.id} value={employee.id}>
+                        {employee.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="flex justify-end gap-4">
-                <button
-                  type="button"
-                  onClick={() => setShowForm(false)}
-                  className="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-6 py-3 bg-purple-500 text-white rounded-lg hover:bg-purple-600"
-                >
-                  {isEditing ? "Update Region" : "Create Region"}
-                </button>
-              </div>
-            </form>
+                <div className="flex justify-end gap-6">
+                  <button
+                    type="button"
+                    onClick={() => setShowForm(false)}
+                    className="px-8 py-3 bg-gray-500 text-white rounded-lg text-lg font-medium hover:bg-gray-600 transition-all duration-300"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-8 py-3 bg-purple-500 text-white rounded-lg text-lg font-medium hover:bg-purple-600 transition-all duration-300"
+                  >
+                    {isEditing ? "Update Region" : "Create Region"}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+
     </div>
   );
 };
