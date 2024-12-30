@@ -306,15 +306,16 @@ const handleFormSubmit = async (e) => {
       {/* Ideas Display Section */}
       <div className="space-y-8 mt-8">
   {ideas.map((idea) => (
-    <div
-      key={idea.id}
-      className={`${
-        idea.submittedBy === userEmail
-          ? "bg-blue-50 border-l-4 border-blue-500"
-          : "bg-white"
-      } p-6 shadow-xl rounded-lg hover:shadow-2xl transition duration-300`}
-    >
-      <div>
+   <div
+   key={idea.id}
+   className={`${
+     idea.submittedBy === userEmail
+       ? "border-l-4 border-blue-500 bg-gray-200"
+       : "bg-gray-200"
+   } p-6 shadow-xl rounded-lg hover:shadow-2xl transition duration-300`}
+ >
+ 
+      <div className='bg-e3e3e3'>
         <h4 className="text-2xl font-semibold text-indigo-800">{idea.title}</h4>
         <p className="text-gray-700 mt-2">{idea.description}</p>
         <p className="text-sm text-gray-500 mt-2">Votes: {idea.voteCount}</p>
