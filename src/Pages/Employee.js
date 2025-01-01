@@ -211,18 +211,18 @@ const Employee = () => {
 
       {showForm && (
   <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
-    <div className="bg-gradient-to-r from-purple-600 to-purple-700 p-10 rounded-xl shadow-2xl w-[600px]">
-      <h2 className="text-3xl font-bold text-white mb-8 text-center">
+    <div className="bg-gradient-to-r from-purple-600 to-purple-700 p-6 rounded-xl shadow-2xl w-[400px]">
+      <h2 className="text-2xl font-bold text-white mb-6 text-center">
         {editingEmployee ? "Edit Employee" : "Add Employee"}
       </h2>
       <form
         onSubmit={editingEmployee ? handleUpdateEmployee : handleAddEmployee}
       >
         {["name", "email", "password", "contact"].map((field) => (
-          <div className="mb-6" key={field}>
+          <div className="mb-4" key={field}>
             <label
               htmlFor={field}
-              className="block text-gray-200 text-lg mb-2 capitalize"
+              className="block text-gray-200 text-sm mb-1 capitalize"
             >
               {field}
             </label>
@@ -234,13 +234,13 @@ const Employee = () => {
                 editingEmployee ? editingEmployee[field] : newEmployee[field]
               }
               onChange={handleInputChange}
-              className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+              className="w-full p-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
               required
             />
           </div>
         ))}
-        <div className="mb-6">
-          <label htmlFor="gender" className="block text-gray-200 text-lg mb-2">
+        <div className="mb-4">
+          <label htmlFor="gender" className="block text-gray-200 text-sm mb-1">
             Gender
           </label>
           <select
@@ -250,7 +250,7 @@ const Employee = () => {
               editingEmployee ? editingEmployee.gender : newEmployee.gender
             }
             onChange={handleInputChange}
-            className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+            className="w-full p-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
             required
           >
             <option value="">Select Gender</option>
@@ -259,8 +259,8 @@ const Employee = () => {
             <option value="Other">Other</option>
           </select>
         </div>
-        <div className="mb-6">
-          <label htmlFor="userRole" className="block text-gray-200 text-lg mb-2">
+        <div className="mb-4">
+          <label htmlFor="userRole" className="block text-gray-200 text-sm mb-1">
             Role
           </label>
           <select
@@ -270,7 +270,7 @@ const Employee = () => {
               editingEmployee ? editingEmployee.userRole : newEmployee.userRole
             }
             onChange={handleInputChange}
-            className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+            className="w-full p-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
             required
           >
             <option value="">Select Role</option>
@@ -279,10 +279,10 @@ const Employee = () => {
             <option value="Employee">Employee</option>
           </select>
         </div>
-        <div className="mb-6">
+        <div className="mb-4">
           <label
             htmlFor="designationId"
-            className="block text-gray-200 text-lg mb-2"
+            className="block text-gray-200 text-sm mb-1"
           >
             Job Designation (Optional)
           </label>
@@ -295,7 +295,7 @@ const Employee = () => {
                 : newEmployee.designationId
             }
             onChange={handleInputChange}
-            className="w-full p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-purple-400"
+            className="w-full p-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
           >
             <option value="">Select Designation</option>
             {jobDesignations.map((designation) => (
@@ -305,17 +305,17 @@ const Employee = () => {
             ))}
           </select>
         </div>
-        <div className="flex justify-end gap-6">
+        <div className="flex justify-end gap-4">
           <button
             type="button"
             onClick={() => setShowForm(false)}
-            className="px-6 py-3 bg-gray-500 text-white rounded-lg text-lg font-medium hover:bg-gray-600 transition-all duration-300"
+            className="px-4 py-2 bg-gray-500 text-white rounded-lg text-sm font-medium hover:bg-gray-600 transition-all duration-300"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-6 py-3 bg-purple-500 text-white rounded-lg text-lg font-medium hover:bg-purple-600 transition-all duration-300"
+            className="px-4 py-2 bg-purple-500 text-white rounded-lg text-sm font-medium hover:bg-purple-600 transition-all duration-300"
           >
             {editingEmployee ? "Update" : "Add"} Employee
           </button>
@@ -324,6 +324,7 @@ const Employee = () => {
     </div>
   </div>
 )}
+
 
     </div>
   );
